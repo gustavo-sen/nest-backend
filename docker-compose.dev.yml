@@ -1,0 +1,44 @@
+  services:
+    # =========================================================
+    # Serviço da aplicação Node.js
+    # =========================================================
+    app:
+      build: .                     # Constrói a imagem a partir do Dockerfile na pasta atual
+      container_name: node-app     # Nome do container para facilitar identificação
+      ports:
+        - "3000:3000"              # Mapeia a porta 3000 do host para a porta 3000 do container
+      volumes:
+        #:Z → ajusta o contexto de SELinux para que o container consiga ler e escrever nessa pasta sem problemas de permissão.
+        - .:/app:Z                 # Monta a pasta do projeto dentro do container, útil para desenvolvimento
+        - /app/node_modules        # Mantém os node_modules do container separados do host
+      environment:
+        - NODE_ENV=development     # Variável de ambiente para o Node
+        - DB_HOST=db               # Host do MySQL (nome do serviço definido abaixo)
+        - DB_USER=root             # Usuário do MySQL
+        - DB_PASSWORD=example      # Senha do MySQL
+        - DB_NAME=meubanco         # Nome do banco usado na aplicação
+      depends_on:
+        - db                        # Garante que o MySQL tente iniciar antes do Node
+      restart: unless-stopped       # Reinicia o container automaticamente em caso de falha
+      command: npm run start
+
+    # =========================================================
+    # Serviço do MySQL
+    # =========================================================
+    db:
+      image: mysql:8.0              # Usa a imagem oficial do MySQL versão 8.0
+      container_name: mysql-db      # Nome do container para fácil identificação
+      environment:
+        MYSQL_ROOT_PASSWORD: example # Senha do root do MySQL
+        MYSQL_DATABASE: meubanco     # Banco de dados criado automaticamente
+      ports:
+        - "3306:3306"               # Mapeia a porta padrão do MySQL para o host
+      volumes:
+        - mysql-data:/var/lib/mysql   # Volume para persistir os dados do banco, mesmo que o container seja removido
+      restart: unless-stopped         # Reinicia automaticamente em caso de falha
+
+  # =========================================================
+  # Definição de volumes persistentes
+  # =========================================================
+  volumes:
+    mysql-data:                    # Volume usado pelo MySQL

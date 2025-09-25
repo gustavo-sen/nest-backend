@@ -1,0 +1,5 @@
+# Ignora pastas e arquivos que não precisam ir para a imagem
+node_modules       # não precisa enviar as dependências do host
+dist               # código compilado (se usar TypeScript/NestJS)
+.env               # variáveis sensíveis
+.git               # histórico do git
