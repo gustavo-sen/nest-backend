@@ -1,7 +1,7 @@
 import { Controller, Get} from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller()
+@Controller("list")
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
@@ -10,8 +10,8 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('mesma-merda') // se nao tem nada dentro é root
-  getLixo(): string {
-    return this.appService.getLixo();
+  @Get('all')
+  getList(): Array<string> {
+    return this.appService.getList();
   }
 }

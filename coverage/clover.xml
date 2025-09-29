@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1758896130801" clover="3.2.0">
+  <project timestamp="1758896130801" name="All files">
+    <metrics statements="27" coveredstatements="10" conditionals="8" coveredconditionals="3" methods="6" coveredmethods="3" elements="41" coveredelements="16" complexity="0" loc="27" ncloc="27" packages="1" files="4" classes="4"/>
+    <file name="app.controller.ts" path="/home/g/Documents/repos/nest-backend/src/app.controller.ts">
+      <metrics statements="8" coveredstatements="7" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="2"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="cond" truecount="3" falsecount="1"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="14" count="1" type="stmt"/>
+      <line num="15" count="0" type="stmt"/>
+    </file>
+    <file name="app.module.ts" path="/home/g/Documents/repos/nest-backend/src/app.module.ts">
+      <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <line num="1" count="0" type="stmt"/>
+      <line num="2" count="0" type="stmt"/>
+      <line num="3" count="0" type="stmt"/>
+      <line num="10" count="0" type="stmt"/>
+    </file>
+    <file name="app.service.ts" path="/home/g/Documents/repos/nest-backend/src/app.service.ts">
+      <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="10" count="0" type="stmt"/>
+    </file>
+    <file name="main.ts" path="/home/g/Documents/repos/nest-backend/src/main.ts">
+      <metrics statements="11" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="1" count="0" type="stmt"/>
+      <line num="2" count="0" type="stmt"/>
+      <line num="4" count="0" type="stmt"/>
+      <line num="7" count="0" type="stmt"/>
+      <line num="8" count="0" type="stmt"/>
+      <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="11" count="0" type="stmt"/>
+      <line num="18" count="0" type="stmt"/>
+      <line num="19" count="0" type="stmt"/>
+      <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="24" count="0" type="stmt"/>
+    </file>
+  </project>
+</coverage>

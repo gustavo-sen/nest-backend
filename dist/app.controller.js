@@ -20,8 +20,8 @@ let AppController = class AppController {
     getHello() {
         return this.appService.getHello();
     }
-    getLixo() {
-        return this.appService.getLixo();
+    getList() {
+        return this.appService.getList();
     }
 };
 exports.AppController = AppController;
@@ -32,13 +32,13 @@ __decorate([
     __metadata("design:returntype", String)
 ], AppController.prototype, "getHello", null);
 __decorate([
-    (0, common_1.Get)('mesma-merda'),
+    (0, common_1.Get)('all'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", String)
-], AppController.prototype, "getLixo", null);
+    __metadata("design:returntype", Array)
+], AppController.prototype, "getList", null);
 exports.AppController = AppController = __decorate([
-    (0, common_1.Controller)(),
+    (0, common_1.Controller)("list"),
     __metadata("design:paramtypes", [app_service_1.AppService])
 ], AppController);
 //# sourceMappingURL=app.controller.js.map

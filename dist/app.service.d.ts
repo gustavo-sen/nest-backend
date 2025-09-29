@@ -1,4 +1,4 @@
 export declare class AppService {
     getHello(): string;
-    getLixo(): string;
+    getList(): Array<string>;
 }
