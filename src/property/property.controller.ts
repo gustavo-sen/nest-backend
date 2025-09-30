@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpCode, Param, ParseBoolPipe, ParseIntPipe, Post, Query, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Param, ParseBoolPipe, ParseIntPipe, Patch, Post, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { CreatePropertyDto } from './dto/createProperty.dto';
 
 // this endpoit start at ip:port/property
@@ -19,7 +19,7 @@ export class PropertyController {
     }
 
     @Get(":id/:slug") 
-    getObjectPassed(@Param() objeto){
+    getObjectPassed(@Param() obje to){
         return objeto;
     }
 
@@ -42,9 +42,14 @@ export class PropertyController {
     //forbidNonWhitelisted nao aceita quando esta com campos nao pertencentes
     //@UsePipes(new ValidationPipe({whitelist: true, forbidNonWhitelisted:true})) // para todo o metodo
     //para validar dentro de cada body particularmente
-    createDto(@Body(new ValidationPipe({whitelist: true, forbidNonWhitelisted:false})) body: CreatePropertyDto){
+    createDto(@Body(new ValidationPipe({whitelist: true, forbidNonWhitelisted:false, groups: ['create']})) body: CreatePropertyDto){
         return body;
     }
 
+
+    @Patch(":id")
+    update(@Body(new ValidationPipe({whitelist: true, forbidNonWhitelisted:false, groups: ['create']})) body:CreatePropertyDto){
+        return body;
+    }
     
 }

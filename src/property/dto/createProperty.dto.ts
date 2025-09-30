@@ -4,7 +4,7 @@ export class CreatePropertyDto{
     @IsString()
     @Length(2, 8)
     @Length(2, 8, {groups:['create']})
-    @Length(2, 8, {groups:['update']})
+    @Length(1, 8, {groups:['update']})
     //@Length(2, 8, {"custom message"})
     name:string
     @IsString()
