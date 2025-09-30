@@ -21,7 +21,7 @@ __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.Length)(2, 8),
     (0, class_validator_1.Length)(2, 8, { groups: ['create'] }),
-    (0, class_validator_1.Length)(2, 8, { groups: ['update'] }),
+    (0, class_validator_1.Length)(1, 8, { groups: ['update'] }),
     __metadata("design:type", String)
 ], CreatePropertyDto.prototype, "name", void 0);
 __decorate([

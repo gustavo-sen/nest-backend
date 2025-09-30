@@ -35,6 +35,9 @@ let PropertyController = class PropertyController {
     createDto(body) {
         return body;
     }
+    update(body) {
+        return body;
+    }
 };
 exports.PropertyController = PropertyController;
 __decorate([
@@ -77,11 +80,18 @@ __decorate([
 __decorate([
     (0, common_1.Post)(),
     (0, common_1.HttpCode)(202),
-    __param(0, (0, common_1.Body)(new common_1.ValidationPipe({ whitelist: true, forbidNonWhitelisted: false }))),
+    __param(0, (0, common_1.Body)(new common_1.ValidationPipe({ whitelist: true, forbidNonWhitelisted: false, groups: ['create'] }))),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [createProperty_dto_1.CreatePropertyDto]),
     __metadata("design:returntype", void 0)
 ], PropertyController.prototype, "createDto", null);
+__decorate([
+    (0, common_1.Patch)(":id"),
+    __param(0, (0, common_1.Body)(new common_1.ValidationPipe({ whitelist: true, forbidNonWhitelisted: false, groups: ['create'] }))),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [createProperty_dto_1.CreatePropertyDto]),
+    __metadata("design:returntype", void 0)
+], PropertyController.prototype, "update", null);
 exports.PropertyController = PropertyController = __decorate([
     (0, common_1.Controller)('property')
 ], PropertyController);

@@ -6,4 +6,5 @@ export declare class PropertyController {
     findById(id: string, slug: string): string;
     create(name: string): string;
     createDto(body: CreatePropertyDto): CreatePropertyDto;
+    update(body: CreatePropertyDto): CreatePropertyDto;
 }

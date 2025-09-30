@@ -19,7 +19,7 @@ export class PropertyController {
     }
 
     @Get(":id/:slug") 
-    getObjectPassed(@Param() obje to){
+    getObjectPassed(@Param() objeto){
         return objeto;
     }
 
