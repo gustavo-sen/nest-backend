@@ -1,5 +1,7 @@
 import { Body, Controller, Get, HttpCode, Param, ParseBoolPipe, ParseIntPipe, Patch, Post, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { CreatePropertyDto } from './dto/createProperty.dto';
+import { IdParamDto } from './dto/idParam.dto';
+import { ParseIdPipe } from './pipes/parseIdPipes';
 
 // this endpoit start at ip:port/property
 @Controller('property')
@@ -24,7 +26,7 @@ export class PropertyController {
     }
 
     @Get("sum/:id/:slug") 
-    findById(@Param('id') id: string, @Param('slug') slug: string){
+    findById(@Param('id')  id: string, @Param('slug') slug: string){
         let sum = (Number.parseInt(id) + Number.parseInt(slug));
         return `id: ${id}, slug: ${slug}, sum: ${sum}`;
     }
@@ -42,14 +44,37 @@ export class PropertyController {
     //forbidNonWhitelisted nao aceita quando esta com campos nao pertencentes
     //@UsePipes(new ValidationPipe({whitelist: true, forbidNonWhitelisted:true})) // para todo o metodo
     //para validar dentro de cada body particularmente
-    createDto(@Body(new ValidationPipe({whitelist: true, forbidNonWhitelisted:false, groups: ['create']})) body: CreatePropertyDto){
+    createDto(@Body(new ValidationPipe({
+        whitelist: true, 
+        forbidNonWhitelisted:false, 
+        groups: ['create']})) body: CreatePropertyDto
+    ){
         return body;
     }
 
 
-    @Patch(":id")
-    update(@Body(new ValidationPipe({whitelist: true, forbidNonWhitelisted:false, groups: ['create']})) body:CreatePropertyDto){
-        return body;
-    }
+    // @Patch(":id")
+    // update(
+    //     @Param() param: IdParamDto, //manualmente
+    //     @Body() body:CreatePropertyDto
+    // ){
+    //     return body;
+    // }
     
+    // @Patch(":id")
+    // update(
+    //     @Param(){id}: IdParamDto, //manualmente
+    //     @Body() body:CreatePropertyDto
+    // ){
+    //     return body;
+    // }
+
+    //custom transform pipe
+    @Patch(":id")
+    update(
+        @Param("id", ParseIdPipe) id, //manualmente
+        @Body() body:CreatePropertyDto
+    ){
+        return body;
+    }
 }

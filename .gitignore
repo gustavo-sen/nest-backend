@@ -7,7 +7,7 @@ logs
 *.log
 npm-debug.log*
 
-# Dependency directories
+# Depe ndency directories
 pids
 logs
 *.pid
@@ -25,4 +25,3 @@ logs
 
 # Environment variables
 .env*
-dist
