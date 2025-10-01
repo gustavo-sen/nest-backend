@@ -1,6 +1,5 @@
 import {z} from "zod";
 
-export class CreatePropertySchema = z.object({
+export const CreatePropertySchema = z.object({
     name:z.string(),
-    
 })
