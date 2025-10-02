@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  Headers,
   HttpCode,
   Param,
   ParseBoolPipe,
@@ -15,6 +16,7 @@ import { CreatePropertyDto } from './dto/createProperty.dto';
 import { ParseIdPipe } from './pipes/parseIdPipes';
 import { ZodValidationPipe } from './pipes/zodValidationPipe';
 import { createPropertySchema } from './dto/createPropertyZod.dto';
+import { HeadersDto } from './dto/headers.dto';
 
 // this endpoit start at ip:port/property
 @Controller('property')
@@ -90,7 +92,8 @@ export class PropertyController {
   update(
     @Param('id', ParseIdPipe) id, //manualmente
     @Body() body: CreatePropertyDto,
+    @Headers('host') header: HeadersDto,
   ) {
-    return body;
+    return header;
   }
 }
