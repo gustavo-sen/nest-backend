@@ -4,6 +4,7 @@ import {
   Get,
   Headers,
   HttpCode,
+  Inject,
   Param,
   ParseBoolPipe,
   ParseIntPipe,
@@ -19,10 +20,33 @@ import { ZodValidationPipe } from './pipes/zodValidationPipe';
 import { createPropertySchema } from './dto/createPropertyZod.dto';
 import { HeadersDto } from './dto/headers.dto';
 import { RequestHeader } from './pipes/request-headers';
+import { PropertyService } from './property.service';
+
+
+// interface Service{
+//   findAll();
+//   findOne();
+//   create();
+//   update();
+// }
 
 // this endpoit start at ip:port/property
 @Controller('property')
 export class PropertyController {
+
+  // propertyService: PropertyService;
+  // // agora pode ser passado o tipo Interface, permitindo alterar sem ter q mudar esta parte do codigo
+  // constructor(propertyService: Service){
+  //   // Dont create your dependency, intead use Dependency Injection DI in NestJS
+  //   // this.propertyService = new PropertyService();
+    
+  //   // Do not create it own depency, get dependency from outside
+  //   this.propertyService = propertyService;
+  // }
+  
+  // Nestjs automatiza isso
+  constructor(private propertyService: PropertyService){}
+
   @Get()
   findAll() {
     return 'All Properties';
@@ -31,12 +55,12 @@ export class PropertyController {
   @Get(':id')
   //ParseIntPipe transforma um valor para inteiro automaticamente
   findOne(@Param('id', ParseIntPipe) id, @Query('sort', ParseBoolPipe) sort) {
-    return id;
+    return this.propertyService.findOne();
   }
 
   @Get(':id/:slug')
   getObjectPassed(@Param() objeto) {
-    return objeto;
+    return this.propertyService.getObjectPassed();
   }
 
   @Get('sum/:id/:slug')
@@ -70,7 +94,7 @@ export class PropertyController {
   @Post(':id')
   @HttpCode(202)
   createDto(@Body() body: CreatePropertyDto) {
-    return body;
+    return this.propertyService.create();
   }
 
   // @Patch(":id")
@@ -106,7 +130,8 @@ export class PropertyController {
     @RequestHeader(HeadersDto) 
     header: HeadersDto,
   ) { 
-    return header;
+    return this.propertyService.update();
   }
 
 }
+ 
