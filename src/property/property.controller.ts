@@ -11,12 +11,14 @@ import {
   Post,
   Query,
   UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { CreatePropertyDto } from './dto/createProperty.dto';
 import { ParseIdPipe } from './pipes/parseIdPipes';
 import { ZodValidationPipe } from './pipes/zodValidationPipe';
 import { createPropertySchema } from './dto/createPropertyZod.dto';
 import { HeadersDto } from './dto/headers.dto';
+import { RequestHeader } from './pipes/request-headers';
 
 // this endpoit start at ip:port/property
 @Controller('property')
@@ -87,13 +89,24 @@ export class PropertyController {
   //     return body;
   // }
 
-  //custom transform pipe
+  // // custom transform pipe
+  // @Patch(':id')
+  // update(
+  //   @Param('id', ParseIdPipe) id, //manualmente
+  //   @Body() body: CreatePropertyDto,
+  //   @Headers('host') header: HeadersDto,
+  // ) { 
+  //   return header;
+  // }
   @Patch(':id')
   update(
-    @Param('id', ParseIdPipe) id, //manualmente
-    @Body() body: CreatePropertyDto,
-    @Headers('host') header: HeadersDto,
-  ) {
+    @Param('id', ParseIdPipe) id,
+    @Body() 
+    body: CreatePropertyDto,
+    @RequestHeader(HeadersDto) 
+    header: HeadersDto,
+  ) { 
     return header;
   }
+
 }

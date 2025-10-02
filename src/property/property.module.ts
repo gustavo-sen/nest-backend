@@ -5,7 +5,7 @@ import { APP_PIPE } from '@nestjs/core';
 @Module({
   controllers: [PropertyController],
 
-  // apply Local module validation
+  // // apply Local module validation
   // providers:[
   //   {
   //     provide:APP_PIPE,
