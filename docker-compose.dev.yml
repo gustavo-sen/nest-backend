@@ -20,7 +20,7 @@ services:
   # Serviço do Banco de Dados PostgreSQL
   db:
     image: postgres:14-alpine
-    container_name: meu-banco-pg
+    container_name: user-db
     env_file:
       - .env # Também carrega as variáveis do .env
     environment:
